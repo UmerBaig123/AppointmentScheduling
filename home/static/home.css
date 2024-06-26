@@ -1,0 +1,233 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #f3f8ff;
+  color: #000;
+  font-family: verdana, sans-serif;
+  font-size: 62.5%;
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+#global {
+  float: left;
+  width: 100%;
+  min-width: 1000px;
+}
+#header {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 130px;
+  margin: 0 0 20px 0;
+  background: #fff;
+}
+#logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#logo-app {
+  position: absolute;
+  left: 20%;
+  top: 25px;
+  margin: 0.5em;
+}
+#nav-main {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #1a498b url(nav-main-bg.gif) 0 100% repeat-x;
+}
+#nav-main ul {
+  margin: 0 0 0 20px;
+}
+ol,
+ul {
+  list-style: none;
+}
+#nav-main ul,
+#nav-main li {
+  float: left;
+  width: auto;
+}
+#nav-main li {
+  font-size: 12px;
+  line-height: 28px;
+  font-weight: bold;
+  height: 100%;
+}
+#main {
+  margin: 20px;
+}
+#context {
+  float: left;
+  width: 20%;
+}
+#context div.wrapper {
+  margin: 0 0 0 10px;
+}
+div.l-s #content {
+  width: 80%;
+}
+#content {
+  float: left;
+  background: #fff url(content-bg2.gif) 100% 0 repeat-y;
+}
+#content div.wrapper {
+  display: block;
+  border-left: 1px solid #c5cad0;
+  border-top: 1px solid #c5cad0;
+  padding: 10px;
+  margin: 0 10px 0 0;
+}
+#content div.wrapper:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#content fieldset {
+  border: 1px solid #d2e1f6;
+  padding: 14px;
+  margin: 0 0 10px 0;
+}
+#content div.bottom {
+  clear: both;
+  width: 100%;
+  height: 10px;
+  background: transparent url(content-bottom-bg.gif) 100% 100% no-repeat;
+}
+#content legend {
+  margin: 0;
+  color: #5f89c3;
+  font-weight: bold;
+}
+div.input {
+  float: left;
+  width: 100%;
+  margin: 0 0 15px 0;
+}
+div.submit input {
+  border: 1px solid #184481;
+  padding: 4px 10px;
+  background: #5f89c3;
+  color: #fff;
+  font-weight: bold;
+}
+div.s input,
+div.s textarea {
+  width: 38%;
+}
+form.top div.text label,
+form.top div.password label,
+form.top div.textarea label,
+form.top div.select label {
+  width: 100%;
+  text-align: left;
+}
+div.text input,
+div.password input,
+div.select select,
+div.textarea textarea {
+  float: left;
+  margin: 0 -5px 0 0;
+  border: 1px solid #a6adb3;
+  padding: 4px;
+  background: #f3f8fe;
+}
+p,
+li,
+dt,
+dd,
+td,
+th,
+label,
+address {
+  font-size: 11px;
+  line-height: 15px;
+}
+form div.text label,
+form div.password label,
+form div.textarea label,
+form div.select label {
+  width: 18%;
+  margin: 0 2% 0 0;
+  padding: 5px 0;
+  text-align: right;
+}
+div.input label {
+  float: left;
+  padding: 5px 0;
+}
+input,
+select,
+text-area,
+legend {
+  font-family: verdana, sans-serif;
+  font-size: 11px;
+  line-height: 15px;
+}
+#footer {
+  float: left;
+  width: 100%;
+  margin: 20px 0 0;
+  border-top: 1px solid #153a6e;
+  background: #153a6e;
+}
+#footer ul {
+  border-top: 1px solid #f3f8ff;
+  padding: 5px 0 5px 20px;
+}
+#footer ul li {
+  display: inline;
+  color: #fff;
+}
+#footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+div select {
+  width: 79%;
+}
+.emailInp {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.link {
+  background-color: #5f89c3;
+  color: black;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+.link:hover {
+  background-color: #153a6e;
+}

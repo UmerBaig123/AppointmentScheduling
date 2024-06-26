@@ -1,0 +1,524 @@
+<html>
+  <head>
+    {% load static %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>AutoAppointment</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="{% static 'home.css'%}"
+    />
+  </head>
+  <body>
+    <div id="global">
+      <div id="header">
+        <div id="logo">
+          <img
+            src="{% static 'auswaertiges-amt-logo-220x120.gif' %}"
+            alt="Auswärtiges Amt"
+          />
+        </div>
+        <div
+          id="logo-app"
+          style="
+            background-image: url(./static/auswaertigesamt.gif);
+            min-height: 54px;
+            width: 78%;
+          "
+        >
+          &nbsp;
+        </div>
+        <div id="nav-main" style="min-height: 28px">
+          <ul>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+      <!-- end: #header -->
+
+      <div id="main" class="l-s">
+        <div id="content">
+          <a hidden="" id="redirect" target="_blank">redirect</a>
+          <div class="wrapper">
+            <div style="font-size: 14pt; font-weight: bold; margin-bottom: 1em">
+              Karachi Appointment waiting list to apply for a study visa (for
+              stays exceeding 90 days)
+            </div>
+
+            <fieldset>
+              <legend>New Appointment</legend>
+
+              <form
+                id="appointment_newAppointmentForm"
+                class="top"
+                method="post"
+                action="{% url 'home' %}"
+              >
+                {% csrf_token %}
+
+                <div
+                  id="wwgrp_appointment_newAppointmentForm_lastname"
+                  class="input text s"
+                >
+                  <div
+                    id="wwlbl_appointment_newAppointmentForm_lastname"
+                    class="wwlbl"
+                  >
+                    <label
+                      for="appointment_newAppointmentForm_lastname"
+                      class="label"
+                    >
+                      Last Name:
+                    </label>
+                  </div>
+                  <div id="wwctrl_appointment_newAppointmentForm_lastname">
+                    <input
+                      type="text"
+                      name="lastname"
+                      value="{{userdata.lastName}}"
+                      id="appointment_newAppointmentForm_lastname"
+                      class="input text s"
+                    />
+                  </div>
+                </div>
+
+                <div
+                  id="wwgrp_appointment_newAppointmentForm_firstname"
+                  class="input text s"
+                >
+                  <div
+                    id="wwlbl_appointment_newAppointmentForm_firstname"
+                    class="wwlbl"
+                  >
+                    <label
+                      for="appointment_newAppointmentForm_firstname"
+                      class="label"
+                    >
+                      First Name:
+                    </label>
+                  </div>
+                  <div id="wwctrl_appointment_newAppointmentForm_firstname">
+                    <input
+                      type="text"
+                      name="firstname"
+                      value="{{userdata.firstName}}"
+                      id="appointment_newAppointmentForm_firstname"
+                      class="input text s"
+                    />
+                  </div>
+                </div>
+
+                <div
+                  id="wwgrp_appointment_newAppointmentForm_email"
+                  class="input text s"
+                >
+                  <div
+                    id="wwlbl_appointment_newAppointmentForm_email"
+                    class="wwlbl"
+                  >
+                    <label
+                      for="appointment_newAppointmentForm_email"
+                      class="label"
+                    >
+                      Email:
+                    </label>
+                  </div>
+                  <div class="emailInp">
+                    <input
+                      type="text"
+                      name="email"
+                      value="{{userdata.formEmail}}"
+                      id="appointment_newAppointmentForm_email"
+                      onkeypress="doNothing(event)"
+                    /><button
+                      style="
+                        border: 1px solid #184481;
+                        padding: 3px 8px;
+                        font-size: 12px;
+                        background: #5f89c3;
+                        color: #fff;
+                        font-weight: bold;
+                      "
+                      type="button"
+                      onclick="copyEmail()"
+                    >
+                      same as account email
+                    </button>
+                  </div>
+                </div>
+
+                <div
+                  id="wwgrp_appointment_newAppointmentForm_fields_0__content"
+                  class="input text l"
+                >
+                  <div
+                    id="wwlbl_appointment_newAppointmentForm_fields_0__content"
+                    class="wwlbl"
+                  >
+                    <label
+                      for="appointment_newAppointmentForm_fields_0__content"
+                      class="label"
+                      ><span class="required">*</span> Passport number:
+                    </label>
+                  </div>
+                  <div
+                    id="wwctrl_appointment_newAppointmentForm_fields_0__content"
+                  >
+                    <input
+                      type="text"
+                      name="passportnumber"
+                      value="{{userdata.passportNumber}}"
+                      id="appointment_newAppointmentForm_fields_0__content"
+                      class="input text l"
+                      onkeypress="doNothing(event)"
+                    />
+                  </div>
+                </div>
+
+                <div
+                  id="wwgrp_appointment_newAppointmentForm_fields_1__content"
+                  class="input select l"
+                >
+                  <div
+                    id="wwlbl_appointment_newAppointmentForm_fields_1__content"
+                    class="wwlbl"
+                  >
+                    <label
+                      for="appointment_newAppointmentForm_fields_1__content"
+                      class="label"
+                      ><span class="required">*</span> Citizenship:
+                    </label>
+                  </div>
+                  <div
+                    id="wwctrl_appointment_newAppointmentForm_fields_1__content"
+                  >
+                    <select
+                      name="citizenship"
+                      id="selectOne"
+                      class="input select l"
+                      value="{{userdata.citizenship}}"
+                      option
+                    >
+                      <option value=""></option>
+                      <option value="Pakistanisch/Pakistani">
+                        Pakistanisch/Pakistani
+                      </option>
+                      <option value="Afghanisch/Afghan">
+                        Afghanisch/Afghan
+                      </option>
+                      <option value="Sonstige/Others">Sonstige/Others</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div
+                  id="wwgrp_appointment_newAppointmentForm_fields_2__content"
+                  class="input text l"
+                >
+                  <div
+                    id="wwlbl_appointment_newAppointmentForm_fields_2__content"
+                    class="wwlbl"
+                  >
+                    <label
+                      for="appointment_newAppointmentForm_fields_2__content"
+                      class="label"
+                      ><span class="required">*</span> Telephone number:
+                    </label>
+                  </div>
+                  <div
+                    id="wwctrl_appointment_newAppointmentForm_fields_2__content"
+                  >
+                    <input
+                      type="text"
+                      name="telephone"
+                      value="{{userdata.telephone}}"
+                      id="appointment_newAppointmentForm_fields_2__content"
+                      class="input text l"
+                    />
+                  </div>
+                </div>
+
+                <div
+                  id="wwgrp_appointment_newAppointmentForm_fields_3__content"
+                  class="input select l"
+                >
+                  <div
+                    id="wwlbl_appointment_newAppointmentForm_fields_3__content"
+                    class="wwlbl"
+                  >
+                    <label
+                      for="appointment_newAppointmentForm_fields_3__content"
+                      class="label"
+                      ><span class="required">*</span> Visa category for study
+                      purposes:
+                    </label>
+                  </div>
+                  <div
+                    id="wwctrl_appointment_newAppointmentForm_fields_3__content"
+                  >
+                    <select
+                      name="visacategory"
+                      id="selectTwo"
+                      class="input select l"
+                    >
+                      <option value=""></option>
+                      <option
+                        value="Recipient of a full scholarship paid by an official German academic institution (e.g. DAAD or AvH) / Stipendiat mit Finanzierung durch eine deutsche Wissenschafts- oder Mittlerorganisation (z.B. DAAD oder AvH)"
+                      >
+                        Recipient of a full scholarship paid by an official
+                        German academic institution (e.g. DAAD or AvH) /
+                        Stipendiat mit Finanzierung durch eine deutsche
+                        Wissenschafts- oder Mittlerorganisation (z.B. DAAD oder
+                        AvH)
+                      </option>
+                      <option
+                        value="Phd students holding an admission letter from a german university / Promotionsstudenten mit Zulassung einer deutschen Universität"
+                      >
+                        Phd students holding an admission letter from a german
+                        university / Promotionsstudenten mit Zulassung einer
+                        deutschen Universität
+                      </option>
+                      <option
+                        value="Master students holding an unconditional direct admission letter from a German university valid for winter semester 2024-2025 / Masterstudenten mit direkter Zulassung ohne Bedingungen für das Wintersemester 2024-2025"
+                      >
+                        Master students holding an unconditional direct
+                        admission letter from a German university valid for
+                        winter semester 2024-2025 / Masterstudenten mit direkter
+                        Zulassung ohne Bedingungen für das Wintersemester
+                        2024-2025
+                      </option>
+                      <option
+                        value="Bachelor students holding an unconditional direct admission letter from a German university valid for winter semester 2024-2025 / Bachelorstudenten mit direkter Zulassung ohne Bedingungen für das Wintersemester 2024-2025"
+                      >
+                        Bachelor students holding an unconditional direct
+                        admission letter from a German university valid for
+                        winter semester 2024-2025 / Bachelorstudenten mit
+                        direkter Zulassung ohne Bedingungen für das
+                        Wintersemester 2024-2025
+                      </option>
+                      <option
+                        value="Study preparation (e.g. language course followed by a foundation course) / Studienvorbereitung (z.B. Sprachkurs mit anschließendem Studienkolleg)"
+                      >
+                        Study preparation (e.g. language course followed by a
+                        foundation course) / Studienvorbereitung (z.B.
+                        Sprachkurs mit anschließendem Studienkolleg)
+                      </option>
+                      <option
+                        value="Language courses for purposes other than study / Sprachkurse zu anderen als Studienzwecken"
+                      >
+                        Language courses for purposes other than study /
+                        Sprachkurse zu anderen als Studienzwecken
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <!-- <div>
+                  <div class="input text s">
+                    <captcha>
+                      <div
+                        id="_-837876706"
+                        style="
+                          background: white
+                            url(&#39;data:image/jpg;base64,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&#39;)
+                            no-repeat scroll left top;
+                          width: 350px;
+                          height: 50px;
+                          margin: 2em;
+                          display: block;
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                    </captcha>
+                  </div>
+
+                  <div class="input submit left">
+                    <input
+                      type="submit"
+                      value="Load another picture"
+                      id="appointment_newAppointmentForm_form_newappointment_refreshcaptcha"
+                      name="action:appointment_refreshCaptcha"
+                    />
+                  </div>
+                </div>
+                <div
+                  id="wwgrp_appointment_newAppointmentForm_captchaText"
+                  class="input text s"
+                >
+                  <div
+                    id="wwlbl_appointment_newAppointmentForm_captchaText"
+                    class="wwlbl"
+                  >
+                    <label
+                      for="appointment_newAppointmentForm_captchaText"
+                      class="label"
+                    >
+                      Please enter here the text you see in the picture above:
+                    </label>
+                  </div>
+                  <div id="wwctrl_appointment_newAppointmentForm_captchaText">
+                    <input
+                      type="text"
+                      name="captchaText"
+                      value=""
+                      id="appointment_newAppointmentForm_captchaText"
+                      class="input text s"
+                      onkeypress="checkKey(event)"
+                    />
+                  </div>
+                </div> -->
+
+                <div class="input submit left">
+                  <input
+                    type="submit"
+                    value="Submit"
+                    id="appointment_newAppointmentForm_appointment_addAppointment"
+                    name="action:appointment_addAppointment"
+                  />
+                  <input
+                    type="submit"
+                    value="Cancel"
+                    id="appointment_newAppointmentForm_appointment_cancelAddAppointment"
+                    name="action:appointment_cancelAddAppointment"
+                  />
+                </div>
+              </form>
+            </fieldset>
+          </div>
+
+          <div class="bottom"></div>
+        </div>
+
+        <div id="context">
+          <div class="wrapper">&nbsp;</div>
+        </div>
+      </div>
+      <!-- end: #main -->
+      <div id="footer">
+        <div style="min-height: 15px">
+          <ul>
+            <li>RK-Termin&nbsp;1.3.0.3</li>
+            <li style="margin-left: 5em">
+              <a
+                href="https://service2.diplo.de/rktermin/extern/dsgvo.do?request_locale=en"
+                target="_blank"
+                title="Information on data protection and instructions for use"
+                ><img
+                  src="{% static 'gb.png'%}"
+                  alt="Information on data protection and instructions for use"
+                  title="Information on data protection and instructions for use"
+                />&nbsp; Information on data protection and instructions for
+                use</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-draggable"
+      tabindex="-1"
+      role="dialog"
+      aria-describedby="commit-request"
+      style="display: none"
+      aria-labelledby="ui-id-1"
+    >
+      <div
+        class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix ui-draggable-handle"
+      >
+        <span id="ui-id-1" class="ui-dialog-title">In Bearbeitung ... </span
+        ><button
+          type="button"
+          class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close"
+          role="button"
+          title="Close"
+        >
+          <span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span
+          ><span class="ui-button-text">Close</span>
+        </button>
+      </div>
+      <div id="commit-request" class="ui-dialog-content ui-widget-content">
+        <p>
+          <span
+            class="ui-icon ui-icon-alert"
+            style="float: left; margin: 0 7px 20px 0; margin-bottom: 100px"
+          ></span>
+          <span id="question">
+            <b>this may take a few moments ...</b><br />Your request is being
+            processed ... please wait ... refreshing this page will delay your
+            booking.
+          </span>
+        </p>
+        <div
+          id="commit-request-progressbar"
+          style="background: #7192b6"
+          class="ui-progressbar ui-widget ui-widget-content ui-corner-all ui-progressbar-indeterminate"
+          role="progressbar"
+          aria-valuemin="0"
+        >
+          <div
+            style="
+              background: rgba(0, 0, 0, 0) url(&#39;images/indet.gif&#39;);
+              opacity: 0.25;
+              height: 2em;
+            "
+          >
+            &nbsp;
+          </div>
+
+          <div
+            class="ui-progressbar-value ui-widget-header ui-corner-left"
+            style="width: 100%"
+          >
+            <div class="ui-progressbar-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById("selectOne").value = "{{userdata.citizenship}}";
+      document.getElementById("selectTwo").value = "{{userdata.visaCategory}}";
+      // const url = ;
+      // document.getElementById("redirect").href=url;
+      function get_url() {
+        var current_url = window.location.href;
+        console.log(current_url.substring(0, current_url.length - 2));
+        var response = fetch(
+          current_url.substring(0, current_url.length - 2) +
+            "checkavailability",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data.availability);
+            if (data.availability != false) {
+              window.location.href =
+                data.availability +
+                "&lastname={{userdata.lastName}}&firstname={{userdata.firstName}}&email={{userdata.formEmail}}&emailrepeat={{userdata.formEmail}}&fields[0].content={{userdata.passportNumber}}&fields[2].content={{userdata.telephone}}&fields[1].content={{userdata.citizenship}}&fields[3].content={{userdata.visaCategory}}&/#appointment_newAppointmentForm_form_newappointment_refreshcaptcha";
+              // document.getElementById("redirect").href = data.availability+"&lastname={{userdata.lastName}}&firstname={{userdata.firstName}}&email={{userdata.formEmail}}&emailrepeat={{userdata.formEmail}}&fields[0].content={{userdata.passportNumber}}&fields[2].content={{userdata.telephone}}&fields[1].content={{userdata.citizenship}}&fields[3].content={{userdata.visaCategory}}&/#appointment_newAppointmentForm_form_newappointment_refreshcaptcha";
+              // document.getElementById("redirect").click()
+              return true;
+            } else {
+              return false;
+            }
+          });
+      }
+      function copyEmail() {
+        document.getElementById("appointment_newAppointmentForm_email").value =
+          "{{old_email}}";
+      }
+      var myInterval = setInterval(() => {
+        if (get_url()) {
+          clearInterval(myInterval);
+        }
+      }, 5000); //<--------change the value of wait time here
+    </script>
+  </body>
+</html>
